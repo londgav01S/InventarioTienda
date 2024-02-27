@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="435.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.inventariotienda.viewController.VentaViewController">
+   <children>
+      <TabPane layoutX="-1.0" layoutY="43.0" prefHeight="358.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Registro de clientes">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="351.0" prefWidth="600.0">
+                     <children>
+                        <TextField fx:id="fNombreCliente" layoutX="161.0" layoutY="37.0" prefHeight="25.0" prefWidth="293.0" />
+                        <TextField fx:id="fNumeroIdentificacionCliente" layoutX="161.0" layoutY="76.0" prefHeight="25.0" prefWidth="293.0" />
+                        <TextField fx:id="fDireccionCliente" layoutX="160.0" layoutY="118.0" prefHeight="25.0" prefWidth="295.0" />
+                        <Label layoutX="105.0" layoutY="41.0" text="Nombre" />
+                        <Label layoutX="14.0" layoutY="80.0" text="Numero de identificación" />
+                        <Label layoutX="99.0" layoutY="122.0" text="Dirección" />
+                        <Label layoutX="132.0" layoutY="14.0" text="Digite los datos correspondientes para hacer el registro del cliente" />
+                        <TableView fx:id="tableCliente" layoutX="40.0" layoutY="203.0" prefHeight="149.0" prefWidth="520.0">
+                          <columns>
+                            <TableColumn fx:id="colNombreCliente" prefWidth="170.0" text="Nombre" />
+                            <TableColumn fx:id="colNumeroIdentificacionCliente" prefWidth="139.0" text="Identificacion" />
+                              <TableColumn fx:id="colDireccionCliente" prefWidth="210.0" text="Direccion" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="btnActualizarCliente" layoutX="138.0" layoutY="152.0" mnemonicParsing="false" onAction="#actualizarClienteEvent" text="Actualizar" />
+                        <Button fx:id="btnRegistrarCliente" layoutX="276.0" layoutY="152.0" mnemonicParsing="false" onAction="#registrarClienteEvent" text="Registrar" />
+                        <Button fx:id="btnEliminarCliente" layoutX="405.0" layoutY="152.0" mnemonicParsing="false" onAction="#eliminarClienteEvent" text="Eliminar" />
+                        <Line endX="452.0" layoutX="124.0" layoutY="191.0" startX="-113.0" startY="-0.5" />
+                        <Line endX="-189.0" endY="59.0" layoutX="200.0" layoutY="131.0" startX="-189.70709228515625" startY="-117.25" />
+                        <Line endX="452.0" layoutX="124.0" layoutY="14.0" startX="-113.0" startY="-0.5" />
+                        <Line endX="-189.0" endY="59.0" layoutX="766.0" layoutY="131.0" startX="-189.70709228515625" startY="-117.25" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Registro de productos">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="fCantidadRegistroProducto" layoutX="350.0" layoutY="33.0" />
+                        <TextField fx:id="fNombreProducto" layoutX="91.0" layoutY="88.0" />
+                        <TextField fx:id="fPrecioProducto" layoutX="350.0" layoutY="88.0" />
+                        <TextField fx:id="fCodigoRegistroProducto" layoutX="91.0" layoutY="33.0" />
+                        <Label layoutX="45.0" layoutY="37.0" text="Codigo" />
+                        <Label layoutX="43.0" layoutY="92.0" text="Nombre" />
+                        <Label layoutX="293.0" layoutY="37.0" text="Cantidad" />
+                        <Label layoutX="308.0" layoutY="92.0" text="Precio" />
+                        <Button fx:id="btnAgregarProducto" layoutX="166.0" layoutY="132.0" mnemonicParsing="false" onAction="#agregarProductoEvent" text="Agregar" />
+                        <Button fx:id="btnActualizarProducto" layoutX="350.0" layoutY="132.0" mnemonicParsing="false" onAction="#actualizarProductoEvent" text="Actualizar" />
+                        <TableView fx:id="tableProducto" layoutX="36.0" layoutY="199.0" prefHeight="152.0" prefWidth="505.0">
+                          <columns>
+                            <TableColumn fx:id="colCodigoProducto" prefWidth="123.0" text="Codigo" />
+                            <TableColumn fx:id="colNombreProducto" prefWidth="140.0" text="Nombre" />
+                              <TableColumn fx:id="colCantidadProducto" prefWidth="116.0" text="Cantidad" />
+                              <TableColumn fx:id="colPrecioProducto" prefWidth="131.0" text="Precio" />
+                          </columns>
+                        </TableView>
+                        <Line endX="432.0" layoutX="115.0" layoutY="178.0" startX="-100.0" />
+                        <Line endX="432.0" layoutX="115.0" layoutY="23.0" startX="-100.0" />
+                        <Line endX="-122.0" endY="-121.0" layoutX="137.0" layoutY="145.0" startX="-122.0" startY="33.0" />
+                        <Line endX="-122.0" endY="-121.0" layoutX="669.0" layoutY="144.0" startX="-122.0" startY="33.0" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Ventas">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableVenta" layoutY="64.0" prefHeight="181.0" prefWidth="600.0">
+                          <columns>
+                            <TableColumn fx:id="colCodigoProductoV" prefWidth="143.0" text="Codigo" />
+                            <TableColumn fx:id="colNombreProductoV" prefWidth="136.0" text="nombre" />
+                              <TableColumn fx:id="colCantidadProductoV" prefWidth="111.0" text="Cantidad " />
+                              <TableColumn fx:id="colPrecioProductoV" prefWidth="202.0" text="Valor por unidad" />
+                          </columns>
+                        </TableView>
+                        <Button layoutX="348.0" layoutY="267.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="70.0" />
+                        <Button fx:id="btnAgregarCarrito" layoutX="134.0" layoutY="286.0" mnemonicParsing="false" onAction="#agregarAlCarritoEvent" text="Agregar al carrito" />
+                        <TextField fx:id="fBuscarCodigo" layoutX="94.0" layoutY="25.0" />
+                        <Button fx:id="btnBuscar" layoutX="275.0" layoutY="25.0" mnemonicParsing="false" onAction="#buscarEvent" text="Buscar" />
+                        <Label layoutX="47.0" layoutY="29.0" text="Codigo" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Carrito">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableCarritoCompras" layoutX="6.0" prefHeight="243.0" prefWidth="600.0">
+                          <columns>
+                            <TableColumn fx:id="colNombreProductoC" prefWidth="213.0" text="Nombre" />
+                            <TableColumn fx:id="colPrecioProductoC" prefWidth="125.0" text="Precio" />
+                              <TableColumn fx:id="colCantidadC" prefWidth="81.0" text="Cantidad" />
+                              <TableColumn fx:id="colTotal" prefWidth="180.0" text="Total" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="btnComrar" layoutX="191.0" layoutY="269.0" mnemonicParsing="false" onAction="#comprarEvent" text="Comprar" />
+                        <Button fx:id="btnElimarDelCarrito" layoutX="330.0" layoutY="269.0" mnemonicParsing="false" onAction="#eliminarDelCarritoEvent" text="Eliminar del carrito" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Label layoutX="239.0" layoutY="11.0" prefHeight="32.0" prefWidth="120.0" text="Bienvenido">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
