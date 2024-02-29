@@ -51,6 +51,11 @@ public class Tienda {
         }
     }
 
+    public  void eliminarCliente( String id) {
+        clientes.remove(id);
+    }
+
+
     public Venta crearVenta (String codigo, Date fecha, double total){
         Venta venta = new Venta(codigo, fecha, total);
         ventas.add(venta);
@@ -62,4 +67,18 @@ public class Tienda {
         carritosCompras.add(carritoCompras);
         return carritoCompras;
     }
+
+    public  void eliminarCarrito(String codigo) {
+        Iterator<CarritoCompras> iterator = carritosCompras.iterator();
+        while (iterator.hasNext()) {
+            CarritoCompras carritoCompras = iterator.next();
+            if (carritoCompras.getCodigo().equals(codigo)) {
+                iterator.remove();
+                System.out.println("El carrito  " + codigo + " ha sido eliminado.");
+                return; // Terminar después de eliminar al cliente
+            }
+        }
+        System.out.println("El carrito " + codigo + " no fue encontrado.");
+    }
 }
+
