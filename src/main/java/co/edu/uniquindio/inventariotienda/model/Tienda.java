@@ -11,7 +11,6 @@ public class Tienda {
     HashSet <CarritoCompras> carritosCompras = new HashSet<>();
 
     public boolean existeProducto (String codigo ){
-
        if  ( productos.containsKey(codigo)){
             return true;
         }

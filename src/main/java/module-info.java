@@ -1,6 +1,8 @@
 module co.edu.uniquindio.inventariotienda {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
+    requires java.logging;
 
 
     opens co.edu.uniquindio.inventariotienda to javafx.fxml;
