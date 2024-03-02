@@ -11,4 +11,6 @@ module co.edu.uniquindio.inventariotienda {
     opens co.edu.uniquindio.inventariotienda.controller to javafx.fxml;
     exports co.edu.uniquindio.inventariotienda.viewController;
     opens co.edu.uniquindio.inventariotienda.viewController to javafx.fxml;
+    opens co.edu.uniquindio.inventariotienda.model to javafx.fxml;
+    exports co.edu.uniquindio.inventariotienda.model;
 }

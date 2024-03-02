@@ -1,7 +1,6 @@
 package co.edu.uniquindio.inventariotienda;
 
 import co.edu.uniquindio.inventariotienda.viewController.VentaViewController;
-import co.edu.uniquindio.inventariotienda.viewController.VentaViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

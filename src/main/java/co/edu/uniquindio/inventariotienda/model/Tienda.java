@@ -3,18 +3,24 @@ package co.edu.uniquindio.inventariotienda.model;
 import java.util.*;
 
 public class Tienda {
-    HashMap<String, Producto> productos = new HashMap<>();
-    HashMap<String, Cliente> clientes = new HashMap<>();
+    private HashMap<String, Producto> productos = new HashMap<>();
+    private HashMap<String, Cliente> clientes = new HashMap<>();
 
-    List <Venta> ventas = new ArrayList<Venta>();
+    private List <Venta> ventas = new ArrayList<>();
 
-    HashSet <CarritoCompras> carritosCompras = new HashSet<>();
+    private HashSet <CarritoCompras> carritosCompras = new HashSet<>();
+
+    private List <DetalleVenta> detallesVentas = new ArrayList<>();
 
     public boolean existeProducto (String codigo ){
        if  ( productos.containsKey(codigo)){
             return true;
         }
        return false;
+    }
+
+    public Producto buscarProducto(String codigo){
+        return productos.get(codigo);
     }
 
     public Producto crearProducto(String codigo, String nombre, int cantidad, double precio) throws Exception {
@@ -29,6 +35,16 @@ public class Tienda {
 
     public void eliminarProducto(String codigo) {
         productos.remove(codigo);
+    }
+
+    public void actualizarProducto(Producto producto, int cantidad, double precio) throws Exception {
+        if(cantidad >= 0){
+            producto.setCantidad(cantidad);
+            producto.setPrecio(precio);
+        }
+        else{
+            throw new Exception("La cantidad ingresada no es valida");
+        }
     }
 
 
@@ -79,5 +95,12 @@ public class Tienda {
         }
         System.out.println("El carrito " + codigo + " no fue encontrado.");
     }
+
+    public DetalleVenta crearDetalleVenta (int cantidad, double subTotal){
+        DetalleVenta detalleVenta = new DetalleVenta(cantidad, subTotal);
+        detallesVentas.add(detalleVenta);
+        return detalleVenta;
+    }
+
 }
 

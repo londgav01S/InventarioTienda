@@ -1,19 +1,16 @@
 package co.edu.uniquindio.inventariotienda.controller;
 
-import co.edu.uniquindio.inventariotienda.model.CarritoCompras;
-import co.edu.uniquindio.inventariotienda.model.Cliente;
-import co.edu.uniquindio.inventariotienda.model.Tienda;
-
+import co.edu.uniquindio.inventariotienda.model.*;
 
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ModelFactoryController {
-    Tienda tienda;
-
+    Tienda tienda = null;
 
 
 
@@ -31,6 +28,13 @@ public class ModelFactoryController {
     }
 
     public ModelFactoryController() {
+        System.out.println("invocación clase singleton");
+        inicializarDatos();
+    }
+
+
+    private void inicializarDatos() {
+        tienda = new Tienda();
 
     }
 
@@ -70,11 +74,6 @@ public class ModelFactoryController {
 
     }
 
-    public void actualizarUsuario() {
-        //TODO: HACERLO
-
-    }
-
 
     public CarritoCompras crearCarrito (String codigo){
         CarritoCompras carritoCompras= tienda.crearCarritoCompras(codigo);
@@ -85,6 +84,32 @@ public class ModelFactoryController {
         tienda.eliminarCarrito(codigo);
     }
 
+
+    public Producto crearProducto (String codigo, String nombre, int cantidad, double precio ) throws Exception {
+        Producto producto = tienda.crearProducto(codigo, nombre, cantidad, precio);
+        return producto;
+    }
+
+    public void eliminarProducto (String codigo){
+        tienda.eliminarProducto(codigo);
+    }
+    public Producto encontrarProducto(String codigo) {
+        Producto producto = tienda.buscarProducto(codigo);
+        return producto;
+    }
+    public void actualizarProducto (Producto producto, int cantidad, double precio) throws Exception {
+        tienda.actualizarProducto(producto, cantidad, precio);
+    }
+
+    public Venta crearVenta (String codigo, Date fecha, double total){
+        Venta venta = tienda.crearVenta(codigo, fecha, total);
+        return venta;
+    }
+
+    public DetalleVenta crearDetalleVenta (int cantidad, double subTotal){
+        DetalleVenta detalleVenta= tienda.crearDetalleVenta(cantidad, subTotal);
+        return detalleVenta;
+    }
     //-----------------------------------------Usuario--------------------------------------------------------------
 
 
