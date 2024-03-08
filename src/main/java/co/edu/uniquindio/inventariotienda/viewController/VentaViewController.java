@@ -339,7 +339,7 @@ public class VentaViewController implements Initializable {
 
     }
 
-
+ //TODO: ESTO NO VA AQUI
     public void mostrarMensajeAlerta (String titulo, String header, String contenido, Alert.AlertType alertType){
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(titulo);
