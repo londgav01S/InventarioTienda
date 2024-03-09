@@ -101,7 +101,7 @@ public class ModelFactoryController {
         tienda.actualizarProducto(producto, cantidad, precio);
     }
 
-    public Venta crearVenta (String codigo, Date fecha, double total){
+    public Venta crearVenta (String codigo, String fecha, double total){
         Venta venta = tienda.crearVenta(codigo, fecha, total);
         return venta;
     }
