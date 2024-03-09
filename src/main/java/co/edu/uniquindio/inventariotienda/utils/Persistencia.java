@@ -20,9 +20,6 @@ public class Persistencia {
         //cargar archivo de usuarios
 
         //cargar archivos Usuarios
-        ArrayList<Usuario> usuariosCargados = cargarUsuarios();
-        if (usuariosCargados.size() > 0)
-            subasta.getListaUsuarios().addAll(usuariosCargados);
         
 
     }
@@ -32,7 +29,6 @@ public class Persistencia {
         try {
             tienda = (Tienda) ArchivoUtil.cargarRecursoSerializado(RUTA_ARCHIVO_MODELO_TIENDA_BINARIO);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return tienda;
@@ -42,7 +38,6 @@ public class Persistencia {
         try {
             ArchivoUtil.salvarRecursoSerializado(RUTA_ARCHIVO_MODELO_TIENDA_BINARIO, tienda);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -53,18 +48,16 @@ public class Persistencia {
         try {
             tienda = (Tienda) ArchivoUtil.cargarRecursoSerializadoXML(RUTA_ARCHIVO_MODELO_TIENDA_XML);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return tienda;
 
     }
 
-    public static void guardarRecursoSubastaXML(Tienda tienda) {
+    public static void guardarRecursoTiendaXML(Tienda tienda) {
         try {
             ArchivoUtil.salvarRecursoSerializadoXML(RUTA_ARCHIVO_MODELO_TIENDA_XML, tienda);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

@@ -20,6 +20,9 @@ public class VentaViewController implements Initializable {
     private Button btnActualizarCliente;
 
     @FXML
+    private Button btEliminarProduct;
+
+    @FXML
     private Button btnActualizarProducto;
 
     @FXML
@@ -113,6 +116,9 @@ public class VentaViewController implements Initializable {
     private TextField fPrecioProducto;
 
     @FXML
+    private TextField codeClienteCarrito;
+
+    @FXML
     private TableView<CarritoCompras> tableCarritoCompras;
 
     @FXML
@@ -162,7 +168,7 @@ public class VentaViewController implements Initializable {
         if(datosValidados(nombre, codigo, cantidad, precio, "a", "a")){
             int cantidadAux = Integer.parseInt(fCantidadRegistroProducto.getText());
             double precioAux = Double.parseDouble(fPrecioProducto.getText());
-            Producto producto= ventaController.crearProducto(codigo, nombre, cantidadAux, precioAux);
+            Producto producto= ventaController.crearProducto(codigo, nombre, cantidadAux, precioAux, null, null);
             listaProductos.add(producto);
             tableProducto.setItems(listaProductos);
             tableVenta.setItems(listaProductos);
@@ -222,8 +228,6 @@ public class VentaViewController implements Initializable {
     @FXML
     void registrarClienteEvent(ActionEvent event) throws Exception {
         registrarClienteAction();
-
-
     }
 
     public void registrarClienteAction() throws Exception {
@@ -231,7 +235,7 @@ public class VentaViewController implements Initializable {
         String direccion = fDireccionCliente.getText();
         String numeroId = fNumeroIdentificacionCliente.getText();
         if(datosValidados(nombre, numeroId, direccion, "precio", "a", "a")){
-            Cliente cliente= ventaController.crearCliente( nombre, numeroId, direccion);
+            Cliente cliente= ventaController.crearCliente(nombre, numeroId, direccion, null, null);
             listaClientes.add(cliente);
             tableCliente.setItems(listaClientes);
 
@@ -241,12 +245,17 @@ public class VentaViewController implements Initializable {
         fNumeroIdentificacionCliente.setText("");
     }
 
+    @FXML
+    void eliminarProducto(ActionEvent event) {
+        //TODO: eliminar producto
+        String codigo = fCodigoRegistroProducto.getText();
+        ventaController.eliminarProducto(codigo);
+        mostrarMensajeAlerta("Eliminacion" , " el producto ha sido eliminado", "proceso completado con exito", Alert.AlertType.WARNING);
+    }
+
     public void  init(Stage primaryStage) {
         this.stage = primaryStage;
     }
-
-
-
 
     Producto productoSeleccionado;
     Cliente clienteSeleccionado;
@@ -295,7 +304,6 @@ public class VentaViewController implements Initializable {
     }
 
     private void mostrarDatosField() {
-
         if (productoSeleccionado != null){
             fNombreProducto.setText(productoSeleccionado.getNombre());
             fCodigoRegistroProducto.setText(productoSeleccionado.getCodigo());
@@ -338,17 +346,7 @@ public class VentaViewController implements Initializable {
         return false;
 
     }
-
- //TODO: ESTO NO VA AQUI
     public void mostrarMensajeAlerta (String titulo, String header, String contenido, Alert.AlertType alertType){
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle(titulo);
-        alert.setHeaderText(header);
-        alert.setContentText(contenido);
-        alert.showAndWait();
+        ventaController.mostrarAlert(titulo, header, contenido, alertType);
     }
-
-
-
-
 }

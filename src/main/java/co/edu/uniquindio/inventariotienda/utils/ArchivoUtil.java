@@ -93,7 +93,6 @@ public class ArchivoUtil {
             LOGGER.log(Level.SEVERE, e.getMessage());
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             LOGGER.log(Level.SEVERE, e.getMessage());
             e.printStackTrace();
         } finally {
@@ -177,9 +176,6 @@ public class ArchivoUtil {
                 oos.close();
         }
     }
-
-
-
 
     public static Object cargarRecursoSerializadoXML(String rutaArchivo) throws IOException {
 

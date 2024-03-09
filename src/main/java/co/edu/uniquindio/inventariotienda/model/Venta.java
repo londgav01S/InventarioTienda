@@ -1,9 +1,10 @@
 package co.edu.uniquindio.inventariotienda.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Venta {
+public class Venta implements Serializable {
     private String codigo ;
     private String fecha;
     private double total;
@@ -80,4 +81,5 @@ public class Venta {
                 ", total=" + total +
                 '}';
     }
+
 }

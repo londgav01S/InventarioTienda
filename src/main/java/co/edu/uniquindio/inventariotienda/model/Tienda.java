@@ -1,8 +1,9 @@
 package co.edu.uniquindio.inventariotienda.model;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Tienda {
+public class Tienda implements Serializable {
 
 
     private HashMap<String, Producto> productos = new HashMap<>();
@@ -12,8 +13,9 @@ public class Tienda {
 
     private HashSet <CarritoCompras> carritosCompras = new HashSet<>();
 
-    //TODO: los metodos crud de las clases no estan terminarlos, falta ponerlos aqui y extenderlos hacia el model factory
 
+
+    /////////////////////////////////////////Producto////////////////////////////////////////////////////////////////
     public boolean existeProducto (String codigo ){
        if  ( productos.containsKey(codigo)){
             return true;
@@ -49,6 +51,8 @@ public class Tienda {
         }
     }
 
+    /////////////////////////////////////////Cliente////////////////////////////////////////////////////////////////
+
 
     public boolean existeCliente (String numeroIdentificacion ){
 
@@ -73,11 +77,39 @@ public class Tienda {
     }
 
 
+    /**
+     * El metodo actualiza la PII del cliente.
+     * @param clienteActualizado
+     * @param clienteSeleccionado
+     */
+    public void actualizarCliente(Cliente clienteActualizado, Cliente clienteSeleccionado){
+        clienteSeleccionado.updateInfo(clienteActualizado);
+    }
+
+    /////////////////////////////////////////Venta////////////////////////////////////////////////////////////////
+
+
     public Venta crearVenta (String codigo, String fecha, double total, DetalleVenta detallesVentas, CarritoCompras carritoCompras, Cliente cliente){
         Venta venta = new Venta(codigo, fecha, total, detallesVentas, carritoCompras, cliente);
         ventas.add(venta);
         return venta;
     }
+
+    public void eliminarVenta(String code){
+        Iterator<Venta> iterator = ventas.iterator();
+        while (iterator.hasNext()) {
+            Venta venta = iterator.next();
+            if (venta.getCodigo().equals(code)) {
+                iterator.remove();
+                System.out.println("La venta  " + code + " ha sido eliminada.");
+                return; // Terminar después de eliminar al cliente
+            }
+        }
+        System.out.println("La venta " + code + " no fue encontrada.");
+    }
+
+
+    /////////////////////////////////////////CarritoCompras////////////////////////////////////////////////////////////////
 
     public CarritoCompras crearCarritoCompras ( String codigoCarrito, Cliente cliente, HashSet<String> codeProducts, Venta venta){
         CarritoCompras carritoCompras = new CarritoCompras(codigoCarrito, cliente, codeProducts, venta);
@@ -97,6 +129,8 @@ public class Tienda {
         }
         System.out.println("El carrito " + codigo + " no fue encontrado.");
     }
+
+    /////////////////////////////////////////DetalleVenta////////////////////////////////////////////////////////////////
 
     public DetalleVenta crearDetalleVenta (int cantidad, double subTotal, HashMap<String, Producto> productos){
         DetalleVenta detalleVenta = new DetalleVenta(cantidad, subTotal, productos);

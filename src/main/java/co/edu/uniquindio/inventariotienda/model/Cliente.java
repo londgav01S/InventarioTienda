@@ -1,8 +1,9 @@
 package co.edu.uniquindio.inventariotienda.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Cliente {
+public class Cliente implements Serializable {
     private String nombre;
     private String numeroIdentificacion;
     private String direccion;
@@ -66,5 +67,11 @@ public class Cliente {
                 ", numero identificacion='" + numeroIdentificacion + '\'' +
                 ", direccion='" + direccion + '\'' +
                 '}';
+    }
+
+    public void updateInfo(Cliente clienteActualizado) {
+        this.nombre =clienteActualizado.getNombre();
+        this.direccion = clienteActualizado.getDireccion();
+        this.numeroIdentificacion = clienteActualizado.getNumeroIdentificacion();
     }
 }

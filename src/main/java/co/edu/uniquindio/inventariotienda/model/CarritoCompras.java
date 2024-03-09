@@ -1,10 +1,11 @@
 package co.edu.uniquindio.inventariotienda.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
-public class CarritoCompras {
+public class CarritoCompras implements Serializable {
     private String codigoCarrito;
 
     private Cliente cliente;

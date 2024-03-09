@@ -1,8 +1,9 @@
 package co.edu.uniquindio.inventariotienda.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class DetalleVenta {
+public class DetalleVenta implements Serializable {
     private int cantidad ;
     private double subTotal;
 

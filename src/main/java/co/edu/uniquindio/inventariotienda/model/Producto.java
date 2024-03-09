@@ -1,11 +1,12 @@
 package co.edu.uniquindio.inventariotienda.model;
 
-public class Producto {
+import java.io.Serializable;
+
+public class Producto implements Serializable {
     private String codigo ;
     private String nombre;
     private int cantidad;
     private double precio;
-
     private CarritoCompras carrito;
     private DetalleVenta detalleVenta;
 
