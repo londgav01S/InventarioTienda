@@ -1,17 +1,51 @@
 package co.edu.uniquindio.inventariotienda.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Venta {
     private String codigo ;
-    private Date fecha;
+    private String fecha;
     private double total;
+    private DetalleVenta detallesVentas;
 
-    public Venta(String codigo, Date fecha, double total) {
+    private CarritoCompras carritoCompras;
 
+    private Cliente cliente;
+
+    public Venta(String codigo, String fecha, double total, DetalleVenta detallesVentas, CarritoCompras carritoCompras, Cliente cliente) {
         this.codigo = codigo;
         this.fecha = fecha;
         this.total = total;
+        this.detallesVentas = detallesVentas;
+        this.carritoCompras = carritoCompras;
+        this.cliente = cliente;
+    }
+
+    public Venta() {}
+
+    public DetalleVenta getDetallesVentas() {
+        return detallesVentas;
+    }
+
+    public void setDetallesVentas(DetalleVenta detallesVentas) {
+        this.detallesVentas = detallesVentas;
+    }
+
+    public CarritoCompras getCarritoCompras() {
+        return carritoCompras;
+    }
+
+    public void setCarritoCompras(CarritoCompras carritoCompras) {
+        this.carritoCompras = carritoCompras;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public String getCodigo() {
@@ -22,11 +56,11 @@ public class Venta {
         this.codigo = codigo;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

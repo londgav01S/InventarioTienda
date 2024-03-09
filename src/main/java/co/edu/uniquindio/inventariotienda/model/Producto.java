@@ -6,11 +6,34 @@ public class Producto {
     private int cantidad;
     private double precio;
 
-    public Producto(String codigo, String nombre, int cantidad, double precio) {
+    private CarritoCompras carrito;
+    private DetalleVenta detalleVenta;
+
+    public Producto(String codigo, String nombre, int cantidad, double precio, CarritoCompras carrito, DetalleVenta detalleVenta) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.precio = precio;
+        this.carrito = carrito;
+        this.detalleVenta = detalleVenta;
+    }
+
+    public Producto() {}
+
+    public CarritoCompras getCarrito() {
+        return carrito;
+    }
+
+    public void setCarrito(CarritoCompras carrito) {
+        this.carrito = carrito;
+    }
+
+    public DetalleVenta getDetalleVenta() {
+        return detalleVenta;
+    }
+
+    public void setDetalleVenta(DetalleVenta detalleVenta) {
+        this.detalleVenta = detalleVenta;
     }
 
     public String getCodigo() {
