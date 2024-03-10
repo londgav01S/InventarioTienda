@@ -130,6 +130,13 @@ public class Tienda implements Serializable {
         System.out.println("El carrito " + codigo + " no fue encontrado.");
     }
 
+    public void eliminarProductoDeCarrito(String codigoProducto, String id){
+        if(existeCliente(id)){
+            Cliente cliente = clientes.get(id);
+            cliente.getCarritoCompras().getCodeProducts().remove(codigoProducto);
+        }
+    }
+
     /////////////////////////////////////////DetalleVenta////////////////////////////////////////////////////////////////
 
     public DetalleVenta crearDetalleVenta (int cantidad, double subTotal, HashMap<String, Producto> productos){

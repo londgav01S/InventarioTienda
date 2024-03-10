@@ -50,6 +50,10 @@ public class VentaController {
         return venta;
     }
 
+    public void eliminarProductoDeCarrito(String codigoProducto, String id) {
+        mfm.eliminarProductoDeCarrito(codigoProducto, id);
+    }
+
     public DetalleVenta crearDetalleVenta(int cantidad, double subTotal, HashMap<String, Producto> productos) {
         DetalleVenta detalleVenta = mfm.crearDetalleVenta(cantidad, subTotal, productos);
         return detalleVenta;

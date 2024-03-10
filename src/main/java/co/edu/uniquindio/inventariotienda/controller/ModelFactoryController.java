@@ -134,6 +134,11 @@ public class ModelFactoryController {
         guardarResourceXML();
     }
 
+    public void eliminarProductoDeCarrito(String codigoProducto,String id){
+        tienda.eliminarProductoDeCarrito(codigoProducto,id);
+        guardarResourceXML();
+    }
+
 
     ///////////////////////////////////////////Producto/////////////////////////////////////////////////////////////////
     public Producto crearProducto (String codigo, String nombre, int cantidad, double precio, CarritoCompras carrito, DetalleVenta detalleVenta) throws Exception {

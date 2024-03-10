@@ -1,9 +1,10 @@
 package co.edu.uniquindio.inventariotienda.model;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.HashMap;
 
-public class Cliente implements Serializable {
+public class Cliente implements Serializable, Comparable<Cliente> {
     private String nombre;
     private String numeroIdentificacion;
     private String direccion;
@@ -73,5 +74,11 @@ public class Cliente implements Serializable {
         this.nombre =clienteActualizado.getNombre();
         this.direccion = clienteActualizado.getDireccion();
         this.numeroIdentificacion = clienteActualizado.getNumeroIdentificacion();
+    }
+
+
+    @Override
+    public int compareTo(Cliente o) {
+        return this.numeroIdentificacion.compareTo(o.numeroIdentificacion);
     }
 }

@@ -12,7 +12,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.HashMap;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class VentaViewController implements Initializable {
 
@@ -202,7 +205,36 @@ public class VentaViewController implements Initializable {
 
     @FXML
     void comprarEvent(ActionEvent event) {
+        if(tableCarritoCompras != null){
+            int cantidadProductos= tableCarritoCompras.getItems().size();
+            //TODO: Crear la lista de productos de la tabla carrito compras
+            int subTotal = calcularTotalProductos();
+            //TODO: revisar esto ya que no se cual seria la lista de la tabla
+            HashMap<String, Producto> productos = crearListaProductosCarrito(tableCarritoCompras.getItems());
+            ventaController.crearDetalleVenta(cantidadProductos, subTotal, productos);
+            ventaController.crearVenta("codigo", "fecha", 0, null, null, clienteSeleccionado);
+            mostrarMensajeAlerta("Compra" , "Compra realizada", "proceso completado con exito", Alert.AlertType.INFORMATION);
+        }
+    }
 
+    public HashMap<String, Producto> crearListaProductosCarrito(ObservableList<Producto> listaProductosCarrito){
+        HashMap<String, Producto> productos = new HashMap<>();
+        for (Producto producto: listaProductosCarrito){
+            productos.put(producto.getCodigo(), producto);
+        }
+        return productos;
+    }
+
+    public int calcularTotalProductos(ObservableList<Producto> listaProductosCarrito){
+        int total = 0;
+        for (Producto producto: listaProductosCarrito){
+            total+= (int) producto.getPrecio();
+        }
+        return total;
+    }
+
+    public double calcularSubTotal(int cantidad, double precio){
+        return cantidad * precio;
     }
 
     @FXML
@@ -222,7 +254,9 @@ public class VentaViewController implements Initializable {
 
     @FXML
     void eliminarDelCarritoEvent(ActionEvent event) {
-
+        //TODO: mirar si ese productoSeleccionado es el de la tabla en el tab carrito, sino crear ese producto cuando lo seleccionamos en la tabla del tab y cambiarlo en la llamada ala funcion
+        String id= codeClienteCarrito.getText();
+        ventaController.eliminarProductoDeCarrito(productoSeleccionado.getCodigo(),id);
     }
 
     @FXML
