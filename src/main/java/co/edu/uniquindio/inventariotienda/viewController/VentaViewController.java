@@ -14,9 +14,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class VentaViewController implements Initializable {
 
@@ -142,7 +140,8 @@ public class VentaViewController implements Initializable {
     private ObservableList<Producto> listaProductosBuscados = FXCollections.observableArrayList();
 
     private Stage stage;
-
+    //TODO: los  metodos actualizar DEBEN ser invocados aqui en sus respectivos botones, los metodos ya están creados en la clase tienda
+    //  SOLO HAY QUE INVOCARLOS.
     @FXML
     void actualizarClienteEvent(ActionEvent event) {
 
@@ -155,14 +154,14 @@ public class VentaViewController implements Initializable {
 
     @FXML
     void agregarAlCarritoEvent(ActionEvent event) {
-        //TODO: revisar si el producto seleccionado es el de la tabla en el tab ventas, sino crear ese producto cuando lo seleccionamos en la tabla del tab y cambiarlo en la llamada ala funcion
-        Producto productoSelected = tableVenta.getSelectionModel().getSelectedItem();
-        String codeCarrito= ventaController.crearCode(10);
-        //TODO: meter codigos de los productos de la tabla
-        HashSet<String> codeProducts = new HashSet<>();
-        if(productoSelected != null){
-            ventaController.crearCarrito(codeCarrito, clienteSeleccionado, null, null);
 
+        String codeCarrito= ventaController.crearCode(10);
+        HashSet<String> codeProducts = new HashSet<>();
+        if(productoSeleccionado != null){
+            if(!ventaController.hasCarrito(clienteSeleccionado)){
+                ventaController.crearCarrito(codeCarrito, clienteSeleccionado, null, null);
+            }
+            ventaController.addProductCart(clienteSeleccionado,productoSeleccionado.getCodigo());
             mostrarMensajeAlerta("Carrito" , "Producto agregado al carrito", "proceso completado con exito", Alert.AlertType.INFORMATION);
         }
     }
@@ -217,9 +216,7 @@ public class VentaViewController implements Initializable {
     void comprarEvent(ActionEvent event) {
         if(tableCarritoCompras != null){
             int cantidadProductos= tableCarritoCompras.getItems().size();
-            //TODO: Crear la lista de productos de la tabla carrito compras
-            int subTotal = calcularTotalProductos();
-            //TODO: revisar esto ya que no se cual seria la lista de la tabla
+            double subTotal = calcularTotalProductos(tableCarritoCompras.getItems());
             HashMap<String, Producto> productos = crearListaProductosCarrito(tableCarritoCompras.getItems());
             ventaController.crearDetalleVenta(cantidadProductos, subTotal, productos);
             ventaController.crearVenta(generarCode(10), "fecha", 0, null, null, clienteSeleccionado);
@@ -227,18 +224,22 @@ public class VentaViewController implements Initializable {
         }
     }
 
-    public HashMap<String, Producto> crearListaProductosCarrito(ObservableList<Producto> listaProductosCarrito){
+    public HashMap<String, Producto> crearListaProductosCarrito(ObservableList<CarritoCompras> listaProductosCarrito){
         HashMap<String, Producto> productos = new HashMap<>();
-        for (Producto producto: listaProductosCarrito){
-            productos.put(producto.getCodigo(), producto);
+        for (CarritoCompras cc : listaProductosCarrito) {
+            for (String prodID : cc.getCodeProducts()) {
+                productos.put(prodID, ventaController.obtenerProducto(prodID));
+            }
         }
         return productos;
     }
 
-    public int calcularTotalProductos(ObservableList<Producto> listaProductosCarrito){
-        int total = 0;
-        for (Producto producto: listaProductosCarrito){
-            total+= (int) producto.getPrecio();
+    public double calcularTotalProductos(ObservableList<CarritoCompras> listaProductosCarrito){
+        double total = 0;
+        for (CarritoCompras carritoCompras: listaProductosCarrito){
+            for( String productosId : carritoCompras.getCodeProducts()){
+                total += ventaController.obtenerPrecio(productosId);
+            }
         }
         return total;
     }
@@ -264,7 +265,7 @@ public class VentaViewController implements Initializable {
 
     @FXML
     void eliminarDelCarritoEvent(ActionEvent event) {
-        //TODO: mirar si ese productoSeleccionado es el de la tabla en el tab carrito, sino crear ese producto cuando lo seleccionamos en la tabla del tab y cambiarlo en la llamada ala funcion
+
         String id= codeClienteCarrito.getText();
         ventaController.eliminarProductoDeCarrito(productoSeleccionado.getCodigo(),id);
     }
@@ -291,7 +292,6 @@ public class VentaViewController implements Initializable {
 
     @FXML
     void eliminarProducto(ActionEvent event) {
-        //TODO: eliminar producto
         String codigo = fCodigoRegistroProducto.getText();
         ventaController.eliminarProducto(codigo);
         mostrarMensajeAlerta("Eliminacion" , " el producto ha sido eliminado", "proceso completado con exito", Alert.AlertType.WARNING);

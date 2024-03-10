@@ -10,6 +10,10 @@ public class VentaController {
 
     ModelFactoryController mfm = ModelFactoryController.getInstance();
 
+    public double obtenerPrecio(String productosId) {
+        return mfm.obtenerPrecioProducto(productosId);
+    }
+
     public Producto crearProducto(String codigo, String nombre, int cantidad, double precio, CarritoCompras carrito, DetalleVenta detalleVenta) throws Exception {
         Producto producto = mfm.crearProducto(codigo, nombre, cantidad, precio, carrito, detalleVenta);
         return producto;
@@ -69,5 +73,17 @@ public class VentaController {
 
     public String crearCode(int l){
         return mfm.generarCode(l);
+    }
+
+    public Producto obtenerProducto(String prodID) {
+        return mfm.obtenerProducto(prodID);
+    }
+
+    public boolean hasCarrito(Cliente clienteSeleccionado) {
+        return mfm.hasCarrito(clienteSeleccionado);
+    }
+
+    public void addProductCart(Cliente clienteSeleccionado, String codigo) {
+        mfm.addProductCart(clienteSeleccionado,codigo);
     }
 }

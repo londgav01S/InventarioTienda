@@ -14,6 +14,22 @@ import java.util.*;
 public class ModelFactoryController {
     Tienda tienda = null;
 
+    public double obtenerPrecioProducto(String productosId) {
+        return tienda.buscarProducto(productosId).getPrecio();
+    }
+
+    public Producto obtenerProducto(String prodID) {
+        return tienda.buscarProducto(prodID);
+    }
+
+    public boolean hasCarrito(Cliente clienteSeleccionado) {
+        return clienteSeleccionado.getCarritoCompras()==null;
+    }
+
+    public void addProductCart(Cliente clienteSeleccionado, String codigo) {
+        clienteSeleccionado.getCarritoCompras().getCodeProducts().add(codigo);
+    }
+
     //------------------------------  Singleton ------------------------------------------------
     // Clase estatica oculta. Tan solo se instanciara el singleton una vez
     private static class SingletonHolder {
