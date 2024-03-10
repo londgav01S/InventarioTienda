@@ -178,4 +178,8 @@ public class ModelFactoryController {
         tienda.eliminarVenta(codigo);
         guardarResourceXML();
     }
+
+    public String generarCode(int l){
+        return tienda.crearCode(l);
+    }
 }

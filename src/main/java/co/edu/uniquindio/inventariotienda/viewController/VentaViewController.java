@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -154,7 +155,16 @@ public class VentaViewController implements Initializable {
 
     @FXML
     void agregarAlCarritoEvent(ActionEvent event) {
+        //TODO: revisar si el producto seleccionado es el de la tabla en el tab ventas, sino crear ese producto cuando lo seleccionamos en la tabla del tab y cambiarlo en la llamada ala funcion
+        Producto productoSelected = tableVenta.getSelectionModel().getSelectedItem();
+        String codeCarrito= ventaController.crearCode(10);
+        //TODO: meter codigos de los productos de la tabla
+        HashSet<String> codeProducts = new HashSet<>();
+        if(productoSelected != null){
+            ventaController.crearCarrito(codeCarrito, clienteSeleccionado, null, null);
 
+            mostrarMensajeAlerta("Carrito" , "Producto agregado al carrito", "proceso completado con exito", Alert.AlertType.INFORMATION);
+        }
     }
 
     @FXML
@@ -212,7 +222,7 @@ public class VentaViewController implements Initializable {
             //TODO: revisar esto ya que no se cual seria la lista de la tabla
             HashMap<String, Producto> productos = crearListaProductosCarrito(tableCarritoCompras.getItems());
             ventaController.crearDetalleVenta(cantidadProductos, subTotal, productos);
-            ventaController.crearVenta("codigo", "fecha", 0, null, null, clienteSeleccionado);
+            ventaController.crearVenta(generarCode(10), "fecha", 0, null, null, clienteSeleccionado);
             mostrarMensajeAlerta("Compra" , "Compra realizada", "proceso completado con exito", Alert.AlertType.INFORMATION);
         }
     }
@@ -379,6 +389,10 @@ public class VentaViewController implements Initializable {
         }
         return false;
 
+    }
+
+    public String generarCode(int longitud){
+        return generarCode(longitud);
     }
     public void mostrarMensajeAlerta (String titulo, String header, String contenido, Alert.AlertType alertType){
         ventaController.mostrarAlert(titulo, header, contenido, alertType);

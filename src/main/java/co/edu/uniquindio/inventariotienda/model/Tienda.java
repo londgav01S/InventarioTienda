@@ -144,5 +144,12 @@ public class Tienda implements Serializable {
         return detalleVenta;
     }
 
+    ////////////////////////////////////////////////////////////
+    public String crearCode(int longitd){
+        GeneradorCodigos generadorCodigos = new GeneradorCodigos();
+        String codigo = generadorCodigos.generarCodigoAleatorio(longitd);
+        return codigo;
+    }
+
 }
 

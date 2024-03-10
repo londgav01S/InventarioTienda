@@ -66,4 +66,8 @@ public class VentaController {
     public void mostrarAlert(String titulo, String header, String contenido, Alert.AlertType tipoAlerta) {
         mfm.mostrarMensajeAlerta(titulo, header, contenido, tipoAlerta);
     }
+
+    public String crearCode(int l){
+        return mfm.generarCode(l);
+    }
 }
