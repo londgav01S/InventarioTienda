@@ -39,6 +39,8 @@ public class Tienda implements Serializable {
 
     public void eliminarProducto(String codigo) {
         productos.remove(codigo);
+        System.out.println("El producto " + codigo + " ha sido eliminado.");
+        System.out.println(productos.size());
     }
 
     public void actualizarProducto(Producto producto, int cantidad, double precio) throws Exception {
@@ -111,8 +113,8 @@ public class Tienda implements Serializable {
 
     /////////////////////////////////////////CarritoCompras////////////////////////////////////////////////////////////////
 
-    public CarritoCompras crearCarritoCompras ( String codigoCarrito, Cliente cliente, HashSet<String> codeProducts, Venta venta){
-        CarritoCompras carritoCompras = new CarritoCompras(codigoCarrito, cliente, codeProducts, venta);
+    public CarritoCompras crearCarritoCompras ( String codigoCarrito,Cliente cliente){
+        CarritoCompras carritoCompras = new CarritoCompras(codigoCarrito, cliente);
         carritosCompras.add(carritoCompras);
         return carritoCompras;
     }

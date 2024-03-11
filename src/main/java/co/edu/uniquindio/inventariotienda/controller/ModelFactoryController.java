@@ -23,11 +23,12 @@ public class ModelFactoryController {
     }
 
     public boolean hasCarrito(Cliente clienteSeleccionado) {
-        return clienteSeleccionado.getCarritoCompras()==null;
+        return !(clienteSeleccionado.getCarritoCompras()==null);
     }
 
     public void addProductCart(Cliente clienteSeleccionado, String codigo) {
-        clienteSeleccionado.getCarritoCompras().getCodeProducts().add(codigo);
+        System.out.println("agregando producto al carrito");
+        clienteSeleccionado.getCarritoCompras().add(codigo);
     }
 
     //------------------------------  Singleton ------------------------------------------------
@@ -54,7 +55,7 @@ public class ModelFactoryController {
         //System.out.println("invocación clase singleton");
 
         guardarResourceXML();
-        //cargarResourceXML();
+        cargarResourceXML();
 
     }
 
@@ -136,13 +137,20 @@ public class ModelFactoryController {
 
     public void eliminarCliente(String id) {
         tienda.eliminarCliente(id);
+        guardarResourceXML();
+    }
+
+    public void actualizarCliente(Cliente clienteActualizado, Cliente clienteSeleccionado) {
+        tienda.actualizarCliente(clienteActualizado, clienteSeleccionado);
+        guardarResourceXML();
     }
 
 
-    public CarritoCompras crearCarrito (String codigoCarrito, Cliente cliente, HashSet<String> codeProducts, Venta venta){
-        CarritoCompras carritoCompras= tienda.crearCarritoCompras(codigoCarrito, cliente, codeProducts, venta);
+    public void crearCarrito (String codigoCarrito,Cliente cliente){
+        CarritoCompras carritoCompras= tienda.crearCarritoCompras(codigoCarrito, cliente);
+        cliente.setCarritoCompras(carritoCompras);
         guardarResourceXML();
-        return  carritoCompras;
+
     }
 
     public void eliminarCarrito (String codigo){
@@ -165,6 +173,7 @@ public class ModelFactoryController {
 
     public void eliminarProducto (String codigo){
         tienda.eliminarProducto(codigo);
+        guardarResourceXML();
     }
     public Producto encontrarProducto(String codigo) {
         Producto producto = tienda.buscarProducto(codigo);

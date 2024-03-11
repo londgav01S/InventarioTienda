@@ -4,20 +4,106 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d188f05c-1c19-406c-94f5-fff899b625a0" name="Changes" comment="implementacion de algunos metodos, hay varios TODO nuevos">
+    <list default="true" id="d188f05c-1c19-406c-94f5-fff899b625a0" name="Changes" comment="ya casi no falta nada, hay dos errores en ventanaviewcontroller sin embargo estan sus repectivos TODO">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/controller/ModelFactoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/controller/ModelFactoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/controller/VentaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/controller/VentaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/model/CarritoCompras.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/model/CarritoCompras.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/model/Tienda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/model/Tienda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/utils/ArchivoUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/utils/ArchivoUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/utils/Persistencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/utils/Persistencia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/viewController/VentaViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/viewController/VentaViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/inventariotienda/PrincipalView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/inventariotienda/PrincipalView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/persistencia/archivoTiendaXml.XML" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/persistencia/archivoTiendaXml.xml" afterDir="false" />
+    </list>
+    <list id="f911a884-d327-4eef-ad95-4dfaf29bd253" name="Changes by Luich" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/controller/ModelFactoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/controller/ModelFactoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/model/CarritoCompras.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/model/CarritoCompras.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/viewController/VentaViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/viewController/VentaViewController.java" afterDir="false" />
     </list>
-    <list id="7fd17a9b-df40-42cb-937a-6d973168ee30" name="Changes by Luich" comment="Changes by Luich" />
+    <list id="83687b94-b83e-47f3-9dcd-6519cb93f91d" name="Changes by Roger" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/viewController/VentaViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/viewController/VentaViewController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;londgav01S&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="eb8d382f-6a20-4bcc-9548-b068a609a206" />
+        <option name="url" value="https://github.com/londgav01S/InventarioTienda.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/model/CarritoCompras.java">
+      <ranges>
+        <range start1="16" end1="17" start2="16" end2="17" changelist="d188f05c-1c19-406c-94f5-fff899b625a0" />
+        <range start1="18" end1="21" start2="18" end2="18" changelist="d188f05c-1c19-406c-94f5-fff899b625a0" />
+        <range start1="57" end1="57" start2="54" end2="60" changelist="f911a884-d327-4eef-ad95-4dfaf29bd253" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/viewController/VentaViewController.java">
+      <ranges>
+        <range start1="123" end1="124" start2="123" end2="124" changelist="83687b94-b83e-47f3-9dcd-6519cb93f91d" />
+        <range start1="138" end1="138" start2="138" end2="140" changelist="83687b94-b83e-47f3-9dcd-6519cb93f91d" />
+        <range start1="140" end1="140" start2="142" end2="144" changelist="f911a884-d327-4eef-ad95-4dfaf29bd253" />
+        <range start1="142" end1="144" start2="146" end2="146" changelist="f911a884-d327-4eef-ad95-4dfaf29bd253" />
+        <range start1="146" end1="147" start2="148" end2="159" changelist="d188f05c-1c19-406c-94f5-fff899b625a0" />
+        <range start1="150" end1="151" start2="162" end2="175" changelist="d188f05c-1c19-406c-94f5-fff899b625a0" />
+        <range start1="152" end1="152" start2="176" end2="182" changelist="d188f05c-1c19-406c-94f5-fff899b625a0" />
+        <range start1="154" end1="154" start2="184" end2="186" changelist="83687b94-b83e-47f3-9dcd-6519cb93f91d" />
+        <range start1="156" end1="157" start2="188" end2="188" changelist="d188f05c-1c19-406c-94f5-fff899b625a0" />
+        <range start1="158" end1="160" start2="189" end2="195" changelist="d188f05c-1c19-406c-94f5-fff899b625a0" />
+        <range start1="161" end1="162" start2="196" end2="199" changelist="f911a884-d327-4eef-ad95-4dfaf29bd253" />
+        <range start1="163" end1="164" start2="200" end2="202" changelist="f911a884-d327-4eef-ad95-4dfaf29bd253" />
+        <range start1="165" end1="165" start2="203" end2="204" changelist="f911a884-d327-4eef-ad95-4dfaf29bd253" />
+        <range start1="176" end1="176" start2="215" end2="216" changelist="d188f05c-1c19-406c-94f5-fff899b625a0" />
+        <range start1="179" end1="180" start2="219" end2="220" changelist="d188f05c-1c19-406c-94f5-fff899b625a0" />
+        <range start1="190" end1="191" start2="230" end2="231" changelist="d188f05c-1c19-406c-94f5-fff899b625a0" />
+        <range start1="192" end1="192" start2="232" end2="233" changelist="d188f05c-1c19-406c-94f5-fff899b625a0" />
+        <range start1="217" end1="221" start2="258" end2="262" changelist="83687b94-b83e-47f3-9dcd-6519cb93f91d" />
+        <range start1="295" end1="295" start2="336" end2="337" changelist="f911a884-d327-4eef-ad95-4dfaf29bd253" />
+        <range start1="296" end1="296" start2="338" end2="339" changelist="f911a884-d327-4eef-ad95-4dfaf29bd253" />
+        <range start1="297" end1="297" start2="340" end2="341" changelist="f911a884-d327-4eef-ad95-4dfaf29bd253" />
+        <range start1="304" end1="304" start2="348" end2="350" changelist="83687b94-b83e-47f3-9dcd-6519cb93f91d" />
+        <range start1="310" end1="310" start2="356" end2="357" changelist="d188f05c-1c19-406c-94f5-fff899b625a0" />
+        <range start1="328" end1="328" start2="375" end2="376" changelist="f911a884-d327-4eef-ad95-4dfaf29bd253" />
+        <range start1="340" end1="340" start2="388" end2="396" changelist="83687b94-b83e-47f3-9dcd-6519cb93f91d" />
+        <range start1="355" end1="355" start2="411" end2="412" changelist="f911a884-d327-4eef-ad95-4dfaf29bd253" />
+        <range start1="394" end1="395" start2="451" end2="452" changelist="d188f05c-1c19-406c-94f5-fff899b625a0" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/inventariotienda/controller/ModelFactoryController.java">
+      <ranges>
+        <range start1="25" end1="26" start2="25" end2="26" changelist="f911a884-d327-4eef-ad95-4dfaf29bd253" />
+        <range start1="29" end1="30" start2="29" end2="31" changelist="d188f05c-1c19-406c-94f5-fff899b625a0" />
+        <range start1="56" end1="57" start2="57" end2="58" changelist="d188f05c-1c19-406c-94f5-fff899b625a0" />
+        <range start1="138" end1="138" start2="139" end2="140" changelist="d188f05c-1c19-406c-94f5-fff899b625a0" />
+        <range start1="140" end1="140" start2="142" end2="146" changelist="d188f05c-1c19-406c-94f5-fff899b625a0" />
+        <range start1="141" end1="143" start2="147" end2="151" changelist="d188f05c-1c19-406c-94f5-fff899b625a0" />
+        <range start1="144" end1="145" start2="152" end2="153" changelist="f911a884-d327-4eef-ad95-4dfaf29bd253" />
+        <range start1="167" end1="167" start2="175" end2="176" changelist="d188f05c-1c19-406c-94f5-fff899b625a0" />
+      </ranges>
+    </file>
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -92,7 +178,7 @@
       <workItem from="1710020310038" duration="8598000" />
       <workItem from="1710037488166" duration="216000" />
       <workItem from="1710086212963" duration="3141000" />
-      <workItem from="1710098221086" duration="854000" />
+      <workItem from="1710098221086" duration="13324000" />
     </task>
     <task id="LOCAL-00001" summary="cambios en el modelo">
       <option name="closed" value="true" />
@@ -126,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710089355372</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="ya casi no falta nada, hay dos errores en ventanaviewcontroller sin embargo estan sus repectivos TODO">
+      <option name="closed" value="true" />
+      <created>1710100873963</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1710100873963</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,6 +232,7 @@
     <MESSAGE value="cambios implementacionde cosas que faltaban" />
     <MESSAGE value="Changes by Luich" />
     <MESSAGE value="implementacion de algunos metodos, hay varios TODO nuevos" />
-    <option name="LAST_COMMIT_MESSAGE" value="implementacion de algunos metodos, hay varios TODO nuevos" />
+    <MESSAGE value="ya casi no falta nada, hay dos errores en ventanaviewcontroller sin embargo estan sus repectivos TODO" />
+    <option name="LAST_COMMIT_MESSAGE" value="ya casi no falta nada, hay dos errores en ventanaviewcontroller sin embargo estan sus repectivos TODO" />
   </component>
 </project>

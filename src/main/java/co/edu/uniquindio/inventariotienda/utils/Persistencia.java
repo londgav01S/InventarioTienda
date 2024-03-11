@@ -13,7 +13,7 @@ public class Persistencia {
     public static final String RUTA_ARCHIVO_PRODUCTO = "/src/main/resources/persistencia/archivoProducto.txt";
     public static final String RUTA_ARCHIVO_VENTA = "src/main/resources/persistencia/archivoVenta.txt";
     private static final String RUTA_ARCHIVO_MODELO_TIENDA_BINARIO = "src/main/resources/persistencia/archivoTiendaBin.dat";
-    private static final String RUTA_ARCHIVO_MODELO_TIENDA_XML = "src/main/resources/persistencia/archivoTiendaXml.XML";
+    private static final String RUTA_ARCHIVO_MODELO_TIENDA_XML = "src/main/resources/persistencia/archivoTiendaXml.xml";
 
 
     public static void cargarDatosArchivos(Tienda tienda) throws FileNotFoundException, IOException {

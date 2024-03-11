@@ -28,6 +28,10 @@ public class VentaController {
         mfm.eliminarCliente(id);
     }
 
+    public void actualizarCliente(Cliente clienteActualizado, Cliente clienteSeleccionado) {
+        mfm.actualizarCliente(clienteActualizado, clienteSeleccionado);
+    }
+
     public Producto encontrarProducto(String codigo) {
         Producto producto = mfm.encontrarProducto(codigo);
         return producto;
@@ -41,8 +45,8 @@ public class VentaController {
         mfm.eliminarProducto(codigo);
     }
 
-    public void crearCarrito(String codigoCarrito, Cliente cliente, HashSet<String> codeProducts, Venta venta) {
-        mfm.crearCarrito(codigoCarrito, cliente, codeProducts, venta);
+    public void crearCarrito(String codigoCarrito, Cliente cliente) {
+        mfm.crearCarrito(codigoCarrito, cliente);
     }
 
     public void eliminarCarrito(String codigo) {

@@ -121,7 +121,7 @@ public class VentaViewController implements Initializable {
     private TextField codeClienteCarrito;
 
     @FXML
-    private TableView<CarritoCompras> tableCarritoCompras;
+    private TableView<Producto> tableCarritoCompras;
 
     @FXML
     private TableView<Cliente> tableCliente;
@@ -136,33 +136,72 @@ public class VentaViewController implements Initializable {
 
     private ObservableList<Producto> listaProductos = FXCollections.observableArrayList();
 
+    private ObservableList<Producto> listaProductoCarrito = FXCollections.observableArrayList();
+
     private ObservableList<Cliente> listaClientes = FXCollections.observableArrayList();
     private ObservableList<Producto> listaProductosBuscados = FXCollections.observableArrayList();
 
+    private ObservableList<Producto> listaProductoCart = FXCollections.observableArrayList();
+
     private Stage stage;
-    //TODO: los  metodos actualizar DEBEN ser invocados aqui en sus respectivos botones, los metodos ya están creados en la clase tienda
-    //  SOLO HAY QUE INVOCARLOS.
     @FXML
     void actualizarClienteEvent(ActionEvent event) {
-
+        if(clienteSeleccionado != null){
+            String nombre = fNombreCliente.getText();
+            String direccion = fDireccionCliente.getText();
+            String numeroId = fNumeroIdentificacionCliente.getText();
+            Cliente clienteActualizado =new Cliente(nombre,numeroId,direccion,null,null);
+            if(datosValidados(nombre, numeroId, direccion, "precio", "a", "a")){
+                ventaController.actualizarCliente(clienteActualizado, clienteSeleccionado);
+                mostrarMensajeAlerta("Actualizacion" , " el cliente ha sido actualizado", "proceso completado con exito", Alert.AlertType.INFORMATION);
+                tableCliente.refresh();
+            }
+        }
     }
 
     @FXML
-    void actualizarProductoEvent(ActionEvent event) {
+    void actualizarProductoEvent(ActionEvent event)  {
+        if(productoSeleccionado != null){
+            System.out.println("entro al metodo");
+            String nombre = fNombreProducto.getText();
+            String codigo = fCodigoRegistroProducto.getText();
+            String cantidad = fCantidadRegistroProducto.getText();
+            String precio = fPrecioProducto.getText();
+            if(datosValidados(nombre, codigo, cantidad, precio, "a", "a")){
+                System.out.println("entro validar");
+                try {
+                    ventaController.actualizarProducto(productoSeleccionado,Integer.parseInt(cantidad), Integer.parseInt(precio));
+                    System.out.println("El producto ha sido actualizado");
+                    tableProducto.refresh();
 
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+                mostrarMensajeAlerta("Actualizacion" , " el producto ha sido actualizado", "proceso completado con exito", Alert.AlertType.INFORMATION);
+            }
+        }
     }
 
+    
+    
     @FXML
     void agregarAlCarritoEvent(ActionEvent event) {
-
         String codeCarrito= ventaController.crearCode(10);
-        HashSet<String> codeProducts = new HashSet<>();
-        if(productoSeleccionado != null){
+         Producto productoElegido = tableVenta.getSelectionModel().getSelectedItem();
+        if(productoElegido != null){
+            System.out.println("tiene producto");
+            listaProductoCart.add(productoElegido);
+            tableCarritoCompras.setItems(listaProductoCart);
+
             if(!ventaController.hasCarrito(clienteSeleccionado)){
-                ventaController.crearCarrito(codeCarrito, clienteSeleccionado, null, null);
+                ventaController.crearCarrito(codeCarrito, clienteSeleccionado);
+
+                System.out.println("no tiene carrito");
             }
-            ventaController.addProductCart(clienteSeleccionado,productoSeleccionado.getCodigo());
+            System.out.println("Se va a agregar");
+            ventaController.addProductCart(clienteSeleccionado,productoElegido.getCodigo());
             mostrarMensajeAlerta("Carrito" , "Producto agregado al carrito", "proceso completado con exito", Alert.AlertType.INFORMATION);
+            tableCarritoCompras.refresh();
         }
     }
 
@@ -174,10 +213,11 @@ public class VentaViewController implements Initializable {
 
     public void agregarProductoAction() throws Exception {
         String nombre = fNombreProducto.getText();
+
         String codigo = fCodigoRegistroProducto.getText();
         String cantidad = fCantidadRegistroProducto.getText();
         String precio = fPrecioProducto.getText();
-        if(datosValidados(nombre, codigo, cantidad, precio, "a", "a")){
+        if(datosValidados(nombre,codigo, cantidad, precio, "a", "a")){
             int cantidadAux = Integer.parseInt(fCantidadRegistroProducto.getText());
             double precioAux = Double.parseDouble(fPrecioProducto.getText());
             Producto producto= ventaController.crearProducto(codigo, nombre, cantidadAux, precioAux, null, null);
@@ -188,8 +228,9 @@ public class VentaViewController implements Initializable {
             fPrecioProducto.setText("");
             fCantidadRegistroProducto.setText("");
             fNombreProducto.setText("");
-
+            fCodigoRegistroProducto.setText(generarCode(10));
         }
+
 
     }
 
@@ -215,10 +256,10 @@ public class VentaViewController implements Initializable {
     @FXML
     void comprarEvent(ActionEvent event) {
         if(tableCarritoCompras != null){
-            int cantidadProductos= tableCarritoCompras.getItems().size();
-            double subTotal = calcularTotalProductos(tableCarritoCompras.getItems());
-            HashMap<String, Producto> productos = crearListaProductosCarrito(tableCarritoCompras.getItems());
-            ventaController.crearDetalleVenta(cantidadProductos, subTotal, productos);
+           // int cantidadProductos= tableCarritoCompras.getItems().size();
+            //double subTotal = calcularTotalProductos(tableCarritoCompras.getItems());
+           // HashMap<String, Producto> productos = crearListaProductosCarrito(tableCarritoCompras.getItems());
+           // ventaController.crearDetalleVenta(cantidadProductos, subTotal, productos);
             ventaController.crearVenta(generarCode(10), "fecha", 0, null, null, clienteSeleccionado);
             mostrarMensajeAlerta("Compra" , "Compra realizada", "proceso completado con exito", Alert.AlertType.INFORMATION);
         }
@@ -293,8 +334,11 @@ public class VentaViewController implements Initializable {
     @FXML
     void eliminarProducto(ActionEvent event) {
         String codigo = fCodigoRegistroProducto.getText();
+        System.out.println(codigo);
         ventaController.eliminarProducto(codigo);
+        tableProducto.refresh();
         mostrarMensajeAlerta("Eliminacion" , " el producto ha sido eliminado", "proceso completado con exito", Alert.AlertType.WARNING);
+        tableProducto.refresh();
     }
 
     public void  init(Stage primaryStage) {
@@ -302,12 +346,15 @@ public class VentaViewController implements Initializable {
     }
 
     Producto productoSeleccionado;
+    Producto productoSeleccionadoCarrito;
+
     Cliente clienteSeleccionado;
     Venta ventaSeleccionada;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ventaController = new VentaController();
+        fCodigoRegistroProducto.setText(generarCode(10));
         this.colNombreCliente.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         this.colDireccionCliente.setCellValueFactory(new PropertyValueFactory<>("direccion"));
         this.colNumeroIdentificacionCliente.setCellValueFactory(new PropertyValueFactory<>("numeroIdentificacion"));
@@ -326,6 +373,7 @@ public class VentaViewController implements Initializable {
         this.colPrecioProductoC.setCellValueFactory(new PropertyValueFactory<>("precio"));
         mostrarSeleccionCliente();
         mostrarSeleccionProducto();
+        tableProducto.setItems(listaProductoCart);
 
     }
 
@@ -338,6 +386,14 @@ public class VentaViewController implements Initializable {
         });
     }
 
+    public void mostrarSeleccionProductoCarrito (){
+        tableVenta.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                productoSeleccionadoCarrito = (Producto) newSelection;
+                mostrarDatosField();
+            }
+        });
+    }
     public void mostrarSeleccionCliente (){
         tableCliente.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
@@ -353,6 +409,7 @@ public class VentaViewController implements Initializable {
             fCodigoRegistroProducto.setText(productoSeleccionado.getCodigo());
             String precioAux = String.valueOf(productoSeleccionado.getPrecio());
             fPrecioProducto.setText(precioAux);
+            fCantidadRegistroProducto.setText(String.valueOf(productoSeleccionado.getCantidad()));
         }
         else if (clienteSeleccionado != null) {
             fNombreCliente.setText(clienteSeleccionado.getNombre());
@@ -392,7 +449,7 @@ public class VentaViewController implements Initializable {
     }
 
     public String generarCode(int longitud){
-        return generarCode(longitud);
+        return ventaController.crearCode(longitud);
     }
     public void mostrarMensajeAlerta (String titulo, String header, String contenido, Alert.AlertType alertType){
         ventaController.mostrarAlert(titulo, header, contenido, alertType);

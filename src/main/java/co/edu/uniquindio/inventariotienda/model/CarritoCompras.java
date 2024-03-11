@@ -14,11 +14,8 @@ public class CarritoCompras implements Serializable {
 
     private Venta venta;
 
-    public CarritoCompras(String codigoCarrito, Cliente cliente, HashSet<String> codeProducts, Venta venta) {
+    public CarritoCompras(String codigoCarrito,Cliente cliente) {
         this.codigoCarrito = codigoCarrito;
-        this.cliente = cliente;
-        this.codeProducts = codeProducts;
-        this.venta = venta;
     }
 
     public CarritoCompras() {}
@@ -55,4 +52,10 @@ public class CarritoCompras implements Serializable {
         this.cliente = cliente;
     }
 
+    public void add(String codigo) {
+        if (codeProducts ==null){
+            codeProducts = new HashSet<>();
+        }
+        codeProducts.add(codigo);
+    }
 }
